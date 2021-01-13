@@ -6,9 +6,4 @@
     </changeSet>
     <include file="changelogs/version_1.0.0.xml" relativeToChangelogFile="true"/>
 
-    <changeSet author="SteveZ" id="1501">
-        <tagDatabase tag="version_1.1.0"/>
-    </changeSet>
-    <include file="changelogs/version_1.1.0.xml" relativeToChangelogFile="true"/>
-
 </databaseChangeLog>

@@ -39,11 +39,11 @@ agent any
           echo "------------------------------------"
           echo "----------liquibase status----------"
           echo "------------------------------------"
-          liquibase --classpath=/Users/support.liquibase.net/Drivers --url=${URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --contexts="${CONTEXTS}" --labels="${LABELS}" status
+          liquibase --classpath=/Users/support.liquibase.net/Drivers --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts="${CONTEXTS}" --labels="${LABELS}" status
           echo "------------------------------------"
           echo "----------liquibase update----------"
           echo "------------------------------------"
-          liquibase --classpath=/Users/support.liquibase.net/Drivers --url=${URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --contexts="${CONTEXTS}" --labels="${LABELS}" update
+          liquibase --classpath=/Users/support.liquibase.net/Drivers --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts="${CONTEXTS}" --labels="${LABELS}" update
         '''
       } // steps
     }   // Environment stage

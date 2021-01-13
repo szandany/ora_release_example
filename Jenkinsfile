@@ -9,6 +9,8 @@ agent any
     GITURL="https://github.com/szandany"
     ENVIRONMENT_STEP="${params.step}"
     BRANCH="${params.pipeline}"
+    LABELS="${params.labels}"
+    CONTEXTS="${params.contexts}"
     PATH="/Users/support.liquibase.net/liquibase:$PATH"
   }
   stages {
@@ -37,11 +39,11 @@ agent any
           echo "------------------------------------"
           echo "----------liquibase status----------"
           echo "------------------------------------"
-          liquibase --classpath=/Users/support.liquibase.net/Drivers --url=${URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --contexts="${params.context}" --labels="${params.labels}" status
+          liquibase --classpath=/Users/support.liquibase.net/Drivers --url=${URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --contexts="${CONTEXTS}" --labels="${LABELS}" status
           echo "------------------------------------"
           echo "----------liquibase update----------"
           echo "------------------------------------"
-          liquibase --classpath=/Users/support.liquibase.net/Drivers --url=${URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --contexts="${params.context}" --labels="${params.labels}" update
+          liquibase --classpath=/Users/support.liquibase.net/Drivers --url=${URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --contexts="${CONTEXTS}" --labels="${LABELS}" update
         '''
       } // steps
     }   // Environment stage

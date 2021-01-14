@@ -7,12 +7,12 @@ agent any
   environment {
     PROJ="ora_release_example"
     GITURL="https://github.com/szandany"
-    ENVIRONMENT_STEP="${step}"
-    BRANCH="${pipeline}"
-    LABELS="${labels}"
-    CONTEXTS="${contexts}"
+    ENVIRONMENT_STEP="${params.step}"
+    BRANCH="${params.pipeline}"
+    LABELS="${params.labels}"
+    CONTEXTS="${params.contexts}"
+    LB_COMMAND="${params.command}"
     PATH="/Users/support.liquibase.net/liquibase:$PATH"
-    LB_COMMAND="${command}"
   }
   stages {
 
@@ -20,7 +20,7 @@ agent any
       steps {
         // checkout Liquibase project from repo
         sh '''
-          echo contexts: $CONTEXTS
+          echo contexts: $contexts
           { set +x; } 2>/dev/null
           cd /Users/support.liquibase.net/workspace
           if [ -d "$PROJ" ]; then rm -Rf $PROJ; fi

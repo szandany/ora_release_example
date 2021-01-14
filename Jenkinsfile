@@ -18,7 +18,6 @@ agent any
       steps {
         // checkout Liquibase project from repo
         sh '''
-          echo contexts: $CONTEXTS
           { set +x; } 2>/dev/null
           cd /Users/support.liquibase.net/workspace
           if [ -d "$PROJ" ]; then rm -Rf $PROJ; fi
@@ -43,7 +42,6 @@ agent any
           echo "------------------------------------"
           echo "----------liquibase ${LB_COMMAND}----------"
           echo "------------------------------------"
-          echo "liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml ${LB_COMMAND}"
           liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml ${LB_COMMAND}
         '''
       } // steps

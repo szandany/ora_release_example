@@ -5,12 +5,12 @@
 pipeline {
 agent any
   environment {
+    LABELS="${params.labels}"
+    CONTEXTS="${params.contexts}"
     PROJ="ora_release_example"
     GITURL="https://github.com/szandany"
     ENVIRONMENT_STEP="${params.step}"
     BRANCH="${params.pipeline}"
-    LABELS=${params.labels}
-    CONTEXTS=${params.contexts}
     PATH="/Users/support.liquibase.net/liquibase:$PATH"
     LB_COMMAND="${params.command}"
   }

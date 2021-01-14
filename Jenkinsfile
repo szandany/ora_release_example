@@ -9,8 +9,6 @@ agent any
     GITURL="https://github.com/szandany"
     ENVIRONMENT_STEP="${params.step}"
     BRANCH="${params.pipeline}"
-    LABELS="${params.labels}"
-    CONTEXTS="${params.contexts}"
     PATH="/Users/support.liquibase.net/liquibase:$PATH"
     LB_COMMAND="${params.command}"
   }
@@ -44,7 +42,7 @@ agent any
           echo "------------------------------------"
           echo "----------liquibase ${LB_COMMAND}----------"
           echo "------------------------------------"
-          liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts="${CONTEXTS}" --labels="${LABELS}" ${LB_COMMAND}
+          liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml ${LB_COMMAND}
         '''
       } // steps
     }   // Environment stage

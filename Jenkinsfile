@@ -7,12 +7,12 @@ agent any
   environment {
     PROJ="ora_release_example"
     GITURL="https://github.com/szandany"
-    ENVIRONMENT_STEP="${params.step}"
-    BRANCH="${params.pipeline}"
+    ENVIRONMENT_STEP="${step}"
+    BRANCH="${pipeline}"
     LABELS="${labels}"
     CONTEXTS="${contexts}"
     PATH="/Users/support.liquibase.net/liquibase:$PATH"
-    LB_COMMAND="${params.command}"
+    LB_COMMAND="${command}"
   }
   stages {
 

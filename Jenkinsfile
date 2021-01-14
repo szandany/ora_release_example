@@ -10,7 +10,7 @@ agent any
     ENVIRONMENT_STEP="${params.step}"
     BRANCH="${params.pipeline}"
     LB_COMMAND="${params.command}"
-    PATH="/Users/support.liquibase.net/liquibase:$PATH"
+    PATH="~/liquibase:$PATH"
   }
   stages {
 
@@ -19,7 +19,7 @@ agent any
         // checkout Liquibase project from repo
         sh '''
           { set +x; } 2>/dev/null
-          cd /Users/support.liquibase.net/workspace
+          cd ~/workspace
           if [ -d "$PROJ" ]; then rm -Rf $PROJ; fi
           git clone ${GITURL}/${PROJ}.git
           cd ${PROJ}
@@ -33,16 +33,16 @@ agent any
       steps {
         sh '''
           { set +x; } 2>/dev/null
-          cd /Users/support.liquibase.net/workspace/${PROJ}
+          cd ~/workspace/${PROJ}
           liquibase --version
           echo "------------------------------------"
           echo "----------liquibase status----------"
           echo "------------------------------------"
-          liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts="${contexts}" --labels="${labels}" status --verbose
+          liquibase --classpath=~/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts="${contexts}" --labels="${labels}" status --verbose
           echo "------------------------------------"
           echo "----------liquibase ${LB_COMMAND}----------"
           echo "------------------------------------"
-          liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts=${contexts} --labels=${labels} ${LB_COMMAND}
+          liquibase --classpath=~/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts=${contexts} --labels=${labels} ${LB_COMMAND}
         '''
       } // steps
     }   // Environment stage
@@ -52,7 +52,7 @@ agent any
              sh '''
                { set +x; } 2>/dev/null
                echo "Deleting project workspace..."
-               cd /Users/support.liquibase.net/workspace && rm -r ${PROJ}
+               cd ~/workspace && rm -r ${PROJ}
              '''
            } // steps
          }   // Deleting project workspace

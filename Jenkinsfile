@@ -20,6 +20,7 @@ agent any
       steps {
         // checkout Liquibase project from repo
         sh '''
+          echo contexts: $CONTEXTS
           { set +x; } 2>/dev/null
           cd /Users/support.liquibase.net/workspace
           if [ -d "$PROJ" ]; then rm -Rf $PROJ; fi

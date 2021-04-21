@@ -38,11 +38,11 @@ agent any
           echo "------------------------------------"
           echo "----------liquibase status----------"
           echo "------------------------------------"
-          liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts="${contexts}" --labels="${labels}" status --verbose
+          liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc8.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts="${contexts}" --labels="${labels}" status --verbose
           echo "------------------------------------"
           echo "----------liquibase ${LB_COMMAND}----------"
           echo "------------------------------------"
-          liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc10.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts=${contexts} --labels=${labels} ${LB_COMMAND}
+          liquibase --classpath=/Users/support.liquibase.net/Drivers/ojdbc8.jar --url=${ORACLE_URL} --username=${ENVIRONMENT_STEP} --password=${PASSWORD} --changeLogFile=master.xml --contexts=${contexts} --labels=${labels} ${LB_COMMAND}
         '''
       } // steps
     }   // Environment stage
